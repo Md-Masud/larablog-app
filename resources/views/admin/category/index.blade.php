@@ -49,27 +49,27 @@
                                 </tr>
                                 </tfoot>
                                 <tbody>
-                                    @foreach($categories as $key=>$category)
-                                        <tr>
-                                            <td>{{ $key + 1 }}</td>
-                                            <td>{{ $category->name }}</td>
-{{--                                            <td>{{ $category->posts->count() }}</td>--}}
-                                            <td>{{ $category->created_at }}</td>
-                                            <td>{{ $category->updated_at }}</td>
-                                            <td class="text-center">
-                                                <a href="{{ route('admin.category.edit',$category->id) }}" class="btn btn-info waves-effect">
-                                                    <i class="material-icons">edit</i>
-                                                </a>
-                                                <button class="btn btn-danger waves-effect" type="button" onclick="deleteCategory({{ $category->id }})">
-                                                    <i class="material-icons">delete</i>
-                                                </button>
-                                                <form id="delete-form-{{ $category->id }}" action="{{ route('admin.category.destroy',$category->id) }}" method="POST" style="display: none;">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                </form>
-                                            </td>
-                                        </tr>
-                                    @endforeach
+                                @foreach($categories as $key=>$category)
+                                    <tr>
+                                        <td>{{ $key + 1 }}</td>
+                                        <td>{{ $category->name }}</td>
+                                        <td>{{ $category->posts->count() }}</td>
+                                        <td>{{ $category->created_at }}</td>
+                                        <td>{{ $category->updated_at }}</td>
+                                        <td class="text-center">
+                                            <a href="{{ route('admin.category.edit',$category->id) }}" class="btn btn-info waves-effect">
+                                                <i class="material-icons">edit</i>
+                                            </a>
+                                            <button class="btn btn-danger waves-effect" type="button" onclick="deleteCategory({{ $category->id }})">
+                                                <i class="material-icons">delete</i>
+                                            </button>
+                                            <form id="delete-form-{{ $category->id }}" action="{{ route('admin.category.destroy',$category->id) }}" method="POST" style="display: none;">
+                                                @csrf
+                                                @method('DELETE')
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>

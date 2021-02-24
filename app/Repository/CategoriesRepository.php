@@ -1,26 +1,22 @@
 <?php
 namespace App\Repository;
-use App\Models\Categories;
+use App\Models\Category;
 use App\Repository\Image\CategoryImage;
-use Carbon\Carbon;
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Str;
-use Intervention\Image\Facades\Image;
-use phpDocumentor\Reflection\DocBlock\Tags\Return_;
+
 
 class CategoriesRepository extends CategoryImage
 {
 
     public function getCategoryOfIndex()
     {
-        $categories=Categories::latest()->get();
-        return $categories;
+        $category=Category::latest()->get();
+        return $category;
     }
     public function categoryStore($request)
     {
         //image create logic
         $this->imageStore($request);
-        $category=Categories::create([
+        $category=Category::create([
             "name"=>$request->name,
             "slug"=>$this->slug,
             "image"=>$this->imagename,
@@ -29,14 +25,14 @@ class CategoriesRepository extends CategoryImage
     }
     public  function  geCategoryId($id)
     {
-     $id=Categories::find($id);
+     $id=Category::find($id);
      return $id;
     }
 
     public  function  CategoryUpdate($request ,$id)
     {
         $this->imageStore($request);
-         return  Categories::where('id',$id)->update([
+         return  Category::where('id',$id)->update([
                   "name"=>$request->name,
                   "slug"=>$this->slug,
                   "image"=>$this->imagename,

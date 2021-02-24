@@ -4,7 +4,6 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CategoriesRequest;
 use App\Repository\CategoriesRepository;
-use Illuminate\Http\Request;
 
 class CategoriesController extends Controller
 {

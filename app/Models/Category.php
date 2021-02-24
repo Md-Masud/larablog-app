@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Tag extends Model
+class Category extends Model
 {
     use HasFactory;
     protected $fillable=[
@@ -14,8 +14,6 @@ class Tag extends Model
     ];
     public function posts()
     {
-        return $this->belongsToMany(Post::class,'post_tags','tag_id','post_id')->withTimestamps();
+        return $this->belongsToMany(Post::class,'category_posts','categories_id','post_id')->withTimestamps();
     }
-
-
 }
